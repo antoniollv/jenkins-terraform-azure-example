@@ -10,7 +10,7 @@ jenkins:
     globalMatrix:
       permissions:
         - "GROUP:Overall/Read:authenticated"
-        - "USER:Overall/Administer:admin"
+        - "USER:Overall/Administer:${JENKINS_ADMIN_ID}"
   remotingSecurity:
     enabled: true
 security:
@@ -21,3 +21,4 @@ security:
 unclassified:
   location:
     url: http://localhost:8080/
+    
