@@ -19,7 +19,7 @@ RUN mv terraform usr/local/bin
 RUN rm terraform.zip    
 
 # drop back to the regular jenkins user - good practice
-USER jenkins_home
+USER jenkins
 
 # Set environment variables for azure cli & Jenkins CASC
 ENV ARM_CLIENT_ID=$ARM_CLIENT_ID \
