@@ -3,7 +3,7 @@
 #https://www.digitalocean.com/community/tutorials/how-to-automate-jenkins-setup-with-docker-and-jenkins-configuration-as-code
 
 #Establecer las variables de entorno en la sesión de construcción de la imagen. en el ejemplo actual ejecutar
-. ./set_evironment_variables.sh
+source $(dirname $0)/set_environment_variables.sh
 
 # build image
 docker build \
@@ -21,16 +21,16 @@ docker build \
 
 #Commands AZ CLI
 
-resourceGroup="gr_jenkins_alfa"
-aciStorageAccountName="sa_jenkins_alfa"
+resourceGroup="grjenkinsalfa"
+aciStorageAccountName="sajenkinsalfa"
 location="westeurope"
-acrName="acr_jenkins_alfa"
+acrName="acrjenkinsalfa"
 
 az account set -s $ARM_SUBSCRIPTION_ID
 
 az group create --l $location \
     -n $resourceGroup \
-    --tags "Project=Jenkins_alfa"
+    --tags "Project=JenkinsAlfa"
 
 az storage account create \
     -g $resourceGroup \
