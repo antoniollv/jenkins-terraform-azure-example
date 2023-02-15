@@ -1,3 +1,9 @@
+#Referencias:
+#https://www.digitalocean.com/community/tutorials/how-to-automate-jenkins-setup-with-docker-and-jenkins-configuration-as-code
+
+#Establecer las variables de entorno en la sesión de construcción de la imagen. en el ejemplo actual ejecutar
+. ./scripts/set_evironment_variables.sh
+
 docker build \
 -t jenkinsalfa:latest \
 --build-arg ARG_ARM_CLIENT_ID=$ARM_CLIENT_ID \
