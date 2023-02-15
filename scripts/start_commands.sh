@@ -14,7 +14,7 @@ docker build \
 --build-arg ARG_ARM_TENANT_ID=$ARM_TENANT_ID \
 --build-arg ARG_JENKINS_ADMIN_ID=$JENKINS_ADMIN_ID \
 --build-arg ARG_JENKINS_ADMIN_PASSWORD=$JENKINS_ADMIN_PASSWORD \
---no-cache .
+--no-cache ..
 
 #docker create --name jenkins_alfa -p 8080:8080 jenkinsalfa:latest
 #docker start jenkins_alfa
@@ -76,13 +76,13 @@ aciStorageAccountKey=$(az storage account keys list --resource-group $resourceGr
 # deploy to aci
 echo "deploying the jenkins image to azure container instances"
 az container create --resource-group $resourceGroup \
-    --name jenkins_alfa \
+    --name jenkins-alfa \
     --image "$acrLoginServer/jenkinsalfa:lts" \
     --cpu 1 --memory 5 \
     --registry-login-server $acrLoginServer \
     --registry-username $acrAdminUser \
     --registry-password $acrAdminPassword \
-    --dns-name-label "jenkinsalfa-dns" \
+    --dns-name-label "jenkins-alfa-dns" \
     --ports 8080 8080 \
     --azure-file-volume-account-name $aciStorageAccountName \
     --azure-file-volume-account-key $aciStorageAccountKey 
