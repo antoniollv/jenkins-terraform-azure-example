@@ -21,11 +21,22 @@ RUN rm terraform.zip
 # drop back to the regular jenkins user - good practice
 USER jenkins
 
+ARG ARG_ARM_CLIENT_ID \
+    ARG_ARM_CLIENT_SECRET \
+    ARG_ARM_SUBSCRIPTION_ID\
+    ARG_ARM_TENANT_ID\
+    ARG_JENKINS_ADMIN_ID \
+    ARG_JENKINS_ADMIN_PASSWORD
+
 # Set environment variables for azure cli & Jenkins CASC
-ENV ARM_CLIENT_ID=$ARM_CLIENT_ID \
-    ARM_CLIENT_SECRET=$ARM_CLIENT_SECRET \
-    ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID \
-    ARM_TENANT_ID=$ARM_TENANT_ID \
+ENV ARM_CLIENT_ID=$ARG_ARM_CLIENT_ID \
+    ARM_CLIENT_SECRET=$ARG_ARM_CLIENT_SECRET \
+    ARM_SUBSCRIPTION_ID=$ARG_ARM_SUBSCRIPTION_ID \
+    ARM_TENANT_ID=$ARG_ARM_TENANT_ID\
+    
+# Set environment variables for Jenkins CASC
+    JENKINS_ADMIN_ID=$ARG_JENKINS_ADMIN_ID \
+    JENKINS_ADMIN_PASSWORD=$ARG_JENKINS_ADMIN_PASSWORD \
     JAVA_OPTS="-Djenkins.install.runSetupWizard=false" \
     CASC_JENKINS_CONFIG="/var/jenkins_home/casc.yaml"
 
