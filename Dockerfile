@@ -40,7 +40,7 @@ ENV ARM_CLIENT_ID=$ARG_ARM_CLIENT_ID \
 
 # Install Jenkins plugins
 RUN jenkins-plugin-cli --plugins \
-    azure-credentials:253.v887e0f9e898b \
+    azure-credentials:254.v64da_8176c83a \
     azure-keyvault:161.va_60991a_5d3d2 \
     configuration-as-code:1569.vb_72405b_80249 \
     workflow-aggregator:590.v6a_d052e5a_a_b_5
