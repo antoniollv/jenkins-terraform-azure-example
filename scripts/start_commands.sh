@@ -28,6 +28,7 @@ resourceGroup="grjenkinsalfa"
 aciStorageAccountName="sajenkinsalfa"
 location="westeurope"
 acrName="acrjenkinsalfa"
+aciName="jenkins-alfa"
 
 az account set -s $ARM_SUBSCRIPTION_ID
 
@@ -79,13 +80,13 @@ aciStorageAccountKey=$(az storage account keys list --resource-group $resourceGr
 # deploy to aci
 echo "deploying the jenkins image to azure container instances"
 az container create --resource-group $resourceGroup \
-    --name jenkins-alfa \
+    --name $aciName \
     --image "$acrLoginServer/jenkinsalfa:latest" \
     --cpu 1 --memory 5 \
     --registry-login-server $acrLoginServer \
     --registry-username $acrAdminUser \
     --registry-password $acrAdminPassword \
-    --dns-name-label "jenkins-alfa-dns" \
+    --dns-name-label "$aciName-dns" \
     --ports 8080 5000 \
     --azure-file-volume-account-name $aciStorageAccountName \
     --azure-file-volume-account-key $aciStorageAccountKey 
@@ -95,5 +96,5 @@ az container create --resource-group $resourceGroup \
 
 # get aci fdqn
 aciFdqn=$(az container show --resource-group $resourceGroup --name $aciName --query ipAddress.fqdn -o tsv)
-echo "$aciFdqn:8080"
 
+echo "Acceso al servidor: http://$aciFdqn:8080"
