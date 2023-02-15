@@ -10,7 +10,7 @@ jenkins:
     globalMatrix:
       permissions:
         - "GROUP:Overall/Read:authenticated"
-        - "USER:Overall/Administer:$(JENKINS_ADMIN_ID)"
+        - "USER:Overall/Administer:admin"
   remotingSecurity:
     enabled: true
 security:
