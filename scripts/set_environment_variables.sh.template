@@ -1,0 +1,10 @@
+#!/bin/bash
+# Azure Service Principal "Agregar los valores adecuados."
+export ARM_CLIENT_ID=
+export ARM_CLIENT_SECRET=
+export ARM_SUBSCRIPTION_ID=
+export ARM_TENANT_ID=
+# Jenkins credentials "Requerida utilidad pwgen"
+export JENKINS_ADMIN_ID=admin
+export JENKINS_ADMIN_PASSWORD=$(pwgen -sy 16 1)
+echo "Password usuario Jenkins admin: $JENKINS_ADMIN_PASSWORD"
