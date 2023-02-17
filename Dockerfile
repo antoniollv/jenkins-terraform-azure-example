@@ -10,7 +10,7 @@ RUN apt-get update && \
 # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 # https://www.terraform.io/downloads.html
-RUN curl https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip --output terraform.zip
+RUN curl https://releases.hashicorp.com/terraform/1.3.3/terraform_1.3.3_linux_amd64.zip --output terraform.zip
 # unzip terraform
 RUN unzip terraform.zip
 # move to usr/local/bin directory
